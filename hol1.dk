@@ -1,0 +1,21 @@
+type : Type.
+arr : type -> type -> type.
+def Elem : type -> Type.
+[a,b] Elem (arr a b) --> Elem a -> Elem b.
+
+set : type.
+prop : type.
+def pf : Elem prop -> Type.
+
+def ap : (a:type) -> (b:type) -> Elem (arr a b) -> Elem a -> Elem b.
+def lam : (a:type) -> (b:type) -> (Elem a -> Elem b) -> Elem (arr a b).
+imp : Elem prop -> Elem prop -> Elem prop.
+all : (a:type) -> (Elem a -> Elem prop) -> Elem prop.
+
+[a,b,m,n] ap a b (lam a b m n) --> m n. (; beta ;)
+[a,b,m,n] lam a b (ap a b m) --> m. (; eta ;)
+
+[p,q] pf (imp p q) --> pf p -> pf q.
+[a,p] pf (all a p) --> (x:Elem a) -> pf (p x).
+
+
