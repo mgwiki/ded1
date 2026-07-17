@@ -5,6 +5,7 @@
 					; (mg-to-dedukti "foo.sexpr" "foo.dk")
 					; or if you want a dk file without proofs:
 					; (mg-to-dedukti "foo.sexpr" "foo.dk" nil)
+					; Note: if you translate with proofs, the translation will fail on incomplete proofs (which typically end with Admitted instead of Qed).
 (defun begin-poly-sec (g m)
   (case m
 	(1 (format g "[a] "))
