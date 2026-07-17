@@ -7,15 +7,13 @@ set : type.
 prop : type.
 def pf : Elem prop -> Type.
 
-def ap : (a:type) -> (b:type) -> Elem (arr a b) -> Elem a -> Elem b.
-def lam : (a:type) -> (b:type) -> (Elem a -> Elem b) -> Elem (arr a b).
-imp : Elem prop -> Elem prop -> Elem prop.
-all : (a:type) -> (Elem a -> Elem prop) -> Elem prop.
+def Ap : (a:type) -> (b:type) -> Elem (arr a b) -> Elem a -> Elem b.
+def Lam : (a:type) -> (b:type) -> (Elem a -> Elem b) -> Elem (arr a b).
+Imp : Elem prop -> Elem prop -> Elem prop.
+All : (a:type) -> (Elem a -> Elem prop) -> Elem prop.
 
-[a,b,m,n] ap a b (lam a b m n) --> m n. (; beta ;)
-[a,b,m,n] lam a b (ap a b m) --> m. (; eta ;)
+[a,b,m,n] Ap a b (Lam a b m n) --> m n. (; beta ;)
+[a,b,m,n] Lam a b (Ap a b m) --> m. (; eta ;)
 
-[p,q] pf (imp p q) --> pf p -> pf q.
-[a,p] pf (all a p) --> (x:Elem a) -> pf (p x).
-
-
+[p,q] pf (Imp p q) --> pf p -> pf q.
+[a,p] pf (All a p) --> (x:Elem a) -> pf (p x).
