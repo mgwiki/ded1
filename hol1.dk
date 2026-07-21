@@ -13,7 +13,7 @@ Imp : Elem prop -> Elem prop -> Elem prop.
 All : (a:type) -> (Elem a -> Elem prop) -> Elem prop.
 
 [a,b,m,n] Ap a b (Lam a b m n) --> m n. (; beta ;)
-[a,b,m,n] Lam a b (Ap a b m) --> m. (; eta ;)
+[a,b,m] Lam a b (Ap a b m) --> m. (; eta ;)
 
 [p,q] pf (Imp p q) --> pf p -> pf q.
 [a,p] pf (All a p) --> (x:Elem a) -> pf (p x).
